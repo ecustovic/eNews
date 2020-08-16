@@ -13,10 +13,8 @@ function loadDataTable() {
         },
         "columns": [
             { "data": "title", "width": "20%" },
-            { "data": "contenttype", "width": "10%" },
             { "data": "description", "width": "20%" },
             { "data": "keywords", "width": "10%" },
-            { "data": "creationtime", "width": "10%" },
             {
                 "data": "id",
                 "render": function (data) {
