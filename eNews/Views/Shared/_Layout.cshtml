@@ -19,7 +19,7 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
-<body>
+<body style="background-color: #9d9d9d;">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -36,6 +36,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="News" asp-action="Index">News</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @await  Html.PartialAsync("LoginPartial")
                 </ul>
             </div>
         </div>
@@ -48,7 +49,7 @@
         <hr />
     </div>
 
-    <footer style="position: fixed; bottom: 0; border-top: .8px solid grey; width: 100%; text-align: center; padding-top:10px;">
+    <footer style="position:fixed; background-color: #222; color: #9d9d9d; font-weight:bolder; bottom: 0; border-top: .8px solid grey; width: 100%; text-align: center; padding-top:10px;">
         <p>&copy; 2020 - eNews</p>
     </footer>
 
