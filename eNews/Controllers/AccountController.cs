@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eNews.Models;
+using eNews.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -22,19 +23,19 @@ namespace eNews.Controllers
 
         public IActionResult Login(string returnUrl)
         {
-            return View(new Login
+            return View(new LoginViewModel
             {
                 ReturnUrl = returnUrl
             });
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(Login loginViewModel)
+        public async Task<IActionResult> Login(LoginViewModel loginViewModel)
         {
             if (!ModelState.IsValid)
                 return View(loginViewModel);
 
-            var user = await _userManager.FindByNameAsync(loginViewModel.Username);
+            var user = await _userManager.FindByNameAsync(loginViewModel.UserName);
 
             if (user != null)
             {
@@ -57,11 +58,11 @@ namespace eNews.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(Login loginViewModel)
+        public async Task<IActionResult> Register(LoginViewModel loginViewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser() { UserName = loginViewModel.Username };
+                var user = new IdentityUser() { UserName = loginViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
 
                 if (result.Succeeded)
@@ -82,6 +83,5 @@ namespace eNews.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
-
     }
 }

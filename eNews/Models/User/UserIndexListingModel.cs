@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eNews.Models
 {
-    public class User
+    public class UserIndexListingModel
     {
         [Key]
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace eNews.Models
 
         public string Phone { get; set; }
 
-        public List<News> News { get; set; }
+        public List<NewsIndexListingModel> News { get; set; }
 
         [ForeignKey("Role")]
         public int RoleId { get; set; }

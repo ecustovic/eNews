@@ -9,25 +9,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eNews.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class NewsController : Controller
     {
         private readonly AppDbContext _db;
         [BindProperty]
-        public News News { get; set; }
+        public NewsIndexListingModel News { get; set; }
 
         public NewsController(AppDbContext db)
         {
             _db = db;
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Upsert(int? id)
         {
-            News = new News();
+            News = new NewsIndexListingModel();
             if (id == null)
             {
                 //create

@@ -15,6 +15,6 @@ namespace eNews.Models
 
         }
 
-        public DbSet<News> News { get; set; }
+        public DbSet<NewsIndexListingModel> News { get; set; }
     }
 }

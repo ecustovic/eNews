@@ -13,6 +13,6 @@ namespace eNews.Models
 
         public string Name { get; set; }
 
-        public List<User> Users { get; set; }
+        public List<UserIndexListingModel> Users { get; set; }
     }
 }

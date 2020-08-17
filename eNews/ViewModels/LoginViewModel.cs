@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace eNews.Models
+namespace eNews.ViewModels
 {
-    public class Login
+    public class LoginViewModel
     {
         [Required]
-        public string Username { get; set; }
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
