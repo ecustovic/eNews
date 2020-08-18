@@ -5,6 +5,11 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eNews", "eNews\eNews.csproj", "{D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsUnitTest", "XUnitTestProject4\NewsUnitTest.csproj", "{8233BCD3-1ADF-40C4-AA09-92FD0335A972}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411} = {D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +20,10 @@ Global
 		{D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0BBE78D-6FF0-4A1B-9A0C-1AFF7E8F5411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8233BCD3-1ADF-40C4-AA09-92FD0335A972}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8233BCD3-1ADF-40C4-AA09-92FD0335A972}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8233BCD3-1ADF-40C4-AA09-92FD0335A972}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8233BCD3-1ADF-40C4-AA09-92FD0335A972}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,24 +1,25 @@
 ﻿@model IEnumerable<eNews.Models.NewsIndexListingModel>
 
 <br />
-<form asp-action="Index" method="POST">
-    <div class="row input-group">
-        <input type="text" name="search" id="search" class="form-control" />
-        <div class="input-group-btn">
-            <input type="submit" class="btn btn-primary" value="Search" />
-        </div>
-    </div>
-</form>
+
 <div class="container row p-0 m-0">
     <div class="col-6">
-        <h2 class="text-center">News Portal</h2>
+        <img src="~/images/logo.png" class="col-md-offset-5 img-responsive" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px; width: 150px; border-radius: 50%; margin-bottom:20px; "/>
     </div>
+
+    <form asp-action="Index" method="POST">
+        <div class="row input-group" style="margin-bottom: 10px;">
+            <input type="text" name="search" id="search" class="form-control" />
+            <div class="input-group-btn">
+                <input type="submit" class="btn btn-primary" value="Search" />
+            </div>
+        </div>
+    </form>
 
     <div class="col-12 border p-3">
         <table class="table table-bordered" style="width:100%">
             <thead>
-                <tr>
-                </tr>
+                <tr></tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)

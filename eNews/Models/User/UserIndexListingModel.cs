@@ -26,10 +26,5 @@ namespace eNews.Models
         public string Phone { get; set; }
 
         public List<NewsIndexListingModel> News { get; set; }
-
-        [ForeignKey("Role")]
-        public int RoleId { get; set; }
-
-        public virtual Role Role { get; set; }
     }
 }
