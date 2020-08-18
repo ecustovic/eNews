@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eNews.Models;
+using eNews.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,8 @@ namespace eNews
             services.AddDbContext<AppDbContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("eNewsDB"))
                 );
+
+            services.AddScoped<INewsRepository, NewsRepository>();
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>();

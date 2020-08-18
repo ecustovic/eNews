@@ -62,6 +62,9 @@ namespace eNews.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Password lenght min 6 chars, 
+                    //at least one non alphanumeric char, 
+                    //mix of lowercase and uppercase chars
                 var user = new IdentityUser() { UserName = loginViewModel.UserName };
                 var result = await _userManager.CreateAsync(user, loginViewModel.Password);
 

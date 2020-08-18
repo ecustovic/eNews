@@ -11,7 +11,6 @@
     <None Include="wwwroot\images\banner1.jpg" />
     <None Include="wwwroot\images\banner2.jpg" />
     <None Include="wwwroot\images\banner3.jpg" />
-    <None Include="wwwroot\images\logo.jpg" />
     <None Include="wwwroot\js\newsList.js" />
     <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\site.min.js" />

@@ -1,28 +1,41 @@
-﻿<br />
+﻿@model IEnumerable<eNews.Models.NewsIndexListingModel>
+
+<br />
 <div class="container row p-0 m-0">
     <div class="col-6">
-        <h2 class="text-info">News Portal</h2>
+        <h2 class="text-center">News Portal</h2>
     </div>
-    <div class="col-3 offset-3">
-        <a asp-action="Upsert" asp-controller="News" class="btn btn-info form-control text-white">
-            Add News
-        </a>
-    </div>
+
     <div class="col-12 border p-3">
-        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+        <table class="table table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Content type</th>
-                    <th>Description</th>
-                    <th>Keywords</th>
-                    <th>Creation time</th>
-                    <th>Creator</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @{
+                            string author = item.User != null ? item.User.FirstName + " " + item.User.LastName : "";
+                        }
 
+                        <td>
+                            <h3>@item.Title</h3>
+                            <h5>@item.ContentType</h5>
+                            <h6>@item.Keywords</h6>
+                            <p>@item.Description</p>
+                            <p>@author</p>
+                            <a class="btn btn-primary" href="@Url.Action("Upsert", "News", new { id = item.Id })">Edit</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
+    </div>
+    <div>
+        <a asp-action="Upsert" asp-controller="News" class="btn btn-info form-control text-white">
+            Add News
+        </a>
     </div>
 </div>

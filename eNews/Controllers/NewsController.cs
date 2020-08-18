@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eNews.Models;
+using eNews.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,22 +13,26 @@ namespace eNews.Controllers
     [Authorize(Roles = "Admin")]
     public class NewsController : Controller
     {
+        private INewsRepository _newsRepository;
         private readonly AppDbContext _db;
+
         [BindProperty]
         public NewsIndexListingModel News { get; set; }
 
-        public NewsController(AppDbContext db)
+        public NewsController(INewsRepository newsRepository, AppDbContext db)
         {
+            _newsRepository = newsRepository;
             _db = db;
         }
 
         [AllowAnonymous]
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<NewsIndexListingModel> news = _newsRepository.GetAll();
+
+            return View(news);
         }
 
-        [Authorize]
         public IActionResult Upsert(int? id)
         {
             News = new NewsIndexListingModel();
@@ -66,25 +71,25 @@ namespace eNews.Controllers
             return View(News);
         }
 
-        #region API Calls
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            return Json(new { data = await _db.News.ToListAsync() });
-        }
+        //#region API Calls
+        //[HttpGet]
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    return Json(new { data = await _db.News.ToListAsync() });
+        //}
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var newsFromDb = await _db.News.FirstOrDefaultAsync(u => u.Id == id);
-            if (newsFromDb == null)
-            {
-                return Json(new { success = false, message = "Error while Deleting" });
-            }
-            _db.News.Remove(newsFromDb);
-            await _db.SaveChangesAsync();
-            return Json(new { success = true, message = "Delete successful" });
-        }
-        #endregion
+        //[HttpDelete]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    var newsFromDb = await _db.News.FirstOrDefaultAsync(u => u.Id == id);
+        //    if (newsFromDb == null)
+        //    {
+        //        return Json(new { success = false, message = "Error while Deleting" });
+        //    }
+        //    _db.News.Remove(newsFromDb);
+        //    await _db.SaveChangesAsync();
+        //    return Json(new { success = true, message = "Delete successful" });
+        //}
+        //#endregion
     }
 }
