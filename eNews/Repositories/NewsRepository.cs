@@ -53,5 +53,12 @@ namespace eNews.Repositories
                 .Include(a => a.User)
                 .FirstOrDefault(a => a.Id == id);
         }
+
+        public List<NewsIndexListingModel> SearchNews(string search)
+        {
+            return _appDbContext.News
+                            .Where(p => p.Title.Contains(search) || p.Keywords.Contains(search))
+                            .ToList();
+        }
     }
 }

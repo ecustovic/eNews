@@ -26,8 +26,14 @@ namespace eNews.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(string search = null)
         {
+            if (!string.IsNullOrEmpty(search))
+            {
+                var foundNews = _newsRepository.SearchNews(search);
+                return View(foundNews);
+            }
+
             IEnumerable<NewsIndexListingModel> news = _newsRepository.GetAll();
 
             return View(news);

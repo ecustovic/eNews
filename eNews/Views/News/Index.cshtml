@@ -1,6 +1,14 @@
 ﻿@model IEnumerable<eNews.Models.NewsIndexListingModel>
 
 <br />
+<form asp-action="Index" method="POST">
+    <div class="row input-group">
+        <input type="text" name="search" id="search" class="form-control" />
+        <div class="input-group-btn">
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </div>
+    </div>
+</form>
 <div class="container row p-0 m-0">
     <div class="col-6">
         <h2 class="text-center">News Portal</h2>

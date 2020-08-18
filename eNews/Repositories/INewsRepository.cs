@@ -11,5 +11,6 @@ namespace eNews.Repositories
         void Edit(int id, NewsIndexListingModel request);
         NewsIndexListingModel GetById(int id);
         void Delete(int id);
+        List<NewsIndexListingModel> SearchNews(string search);
     }
 }
